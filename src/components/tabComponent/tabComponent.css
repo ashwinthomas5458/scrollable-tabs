@@ -10,6 +10,7 @@
     display: flex;
     align-items: center;
 }
+.tc_tabHeadContainer{width: max-content;}
 .tc_flexColumn{flex-direction: column;}
 .tc_tabHead{
     position: relative;
@@ -17,6 +18,25 @@
     padding: 4px 16px;
     cursor: pointer;
     transition: 0.3s ease-in;
+}
+.tc_headOverflowContainer{
+    overflow-y: hidden;
+    overflow-x: auto;
+    max-width: 80vw;
+    scrollbar-color: #eee #bbb;
+    scrollbar-width: thin;
+}
+.tc_headOverflowContainer::-webkit-scrollbar {
+    width: 4px;
+    height: 4px;
+    border-radius: 2px;
+}
+
+.tc_headOverflowContainer::-webkit-scrollbar-track {
+    background-color: #eee;
+}
+.tc_headOverflowContainer::-webkit-scrollbar-thumb {
+    background-color: #bbb;
 }
 .tc_tabHead h4::after{
     content: "";

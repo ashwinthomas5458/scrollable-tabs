@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import AddNewTab from './addNewTab';
 import ConfirmationModal from './confirmationModal';
 import './tabComponent.css';
@@ -13,6 +13,7 @@ const TabComponent = (props) => {
   const [confirmationModalAnime, setConfirmationModalAnime] = useState(false);
   const [newTabModal, setNewTabModal] = useState(false);
   const [newTabModalAnime, setNewTabModalAnime] = useState(false);
+  const headWrapRef = useRef(null);
 
   useEffect(() => {
     let tabData = [];
@@ -24,9 +25,11 @@ const TabComponent = (props) => {
   const tabChange = (e,key) => {
     if(!e.target.classList.contains('tc_deleteIcon')){
       let tabIndex = currentTab;
+      let tabItems = headWrapRef.current.children;
       if (key === "PREV") tabIndex = tabIndex - 1;
       else if (key === "NEXT") tabIndex = tabIndex + 1;
       else tabIndex = key;
+      tabItems[tabIndex].focus();
       setCurrentTab(tabIndex);
     }
   }
@@ -95,11 +98,11 @@ const TabComponent = (props) => {
                     null
                 }
                 <div className="tc_headOverflowContainer">
-                  <div className="tc_tabHeadContainer">
+                  <div className="tc_tabHeadContainer" ref={headWrapRef}>
                   {
                     tabs.map((tab, i) => {
                       return (
-                        <div className={currentTab == i ? "tc_tabHead tc_tabHeadSelected" : "tc_tabHead"} onClick={(e) => tabChange(e,i)}>
+                        <div className={currentTab == i ? "tc_tabHead tc_tabHeadSelected" : "tc_tabHead"} onClick={(e) => tabChange(e,i)} tabindex="0">
                           {tabs.length>1? <div className="tc_deleteIcon" onClick={()=>showModalConfirmationModal(i)}></div>: null}
                           <h4>{tab.heading ? tab.heading : `Tab ${i + 1}`}</h4>
                         </div>
