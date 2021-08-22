@@ -1,0 +1,220 @@
+.tc_mainWrapper{
+    width: 100%;
+}
+.tc_tabHeadWrapper{
+    display: flex;
+    align-items: center;
+    margin: 0 -16px;
+}
+.tc_tabHeadContainer, .tc_container{
+    display: flex;
+    align-items: center;
+}
+.tc_flexColumn{flex-direction: column;}
+.tc_tabHead{
+    position: relative;
+    color: #444;
+    padding: 4px 16px;
+    cursor: pointer;
+    transition: 0.3s ease-in;
+}
+.tc_tabHead h4::after{
+    content: "";
+    position: absolute;
+    left: 16px;
+    bottom: 0;
+    height: 2px;
+    width: 0;
+    opacity: 0;
+    background-color: #111;
+    transition: 0.3s ease-in;
+}
+.tc_tabHead.tc_tabHeadSelected{
+    color: #111;
+}
+.tc_tabHead.tc_tabHeadSelected h4::after{
+    width: calc(100% - 32px);
+    opacity: 1;
+}
+.tc_tabContent{
+    padding: 24px 0;
+}
+.tc_chevronLeft{ background-image: url(../../icons/leftChevron.svg);}
+.tc_chevronRight{ background-image: url(../../icons/rightChevron.svg);}
+.tc_chevronLeft,.tc_chevronRight{
+    width: 2rem;
+    height: 2rem;
+    opacity: 0.7;
+    border-radius: 1rem;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: 0.8rem;
+    transition: 0.3s ease-in;
+    cursor: pointer;
+    margin: 0 16px;
+    box-shadow: 3px 3px 5px #bebebe00;
+}
+.tc_chevronLeft:hover,.tc_chevronRight:hover{
+    opacity: 1;
+    box-shadow: 3px 3px 5px #bebebe;
+}
+.tc_deleteIcon{
+    width: 16px;
+    height: 16px;
+    position: absolute;
+    top: 0;
+    right: 0;
+    background-color: #fff0;
+    border-radius: 8px;
+    background-image: url(../../icons/closeIcon.svg);
+    background-size: 8px;
+    background-position: center;
+    background-repeat: no-repeat;
+    opacity: 0;
+    z-index: 1;
+    transition: 0.3s ease-in;
+    pointer-events: none;
+}
+.tc_closeIcon{
+    width: 10px;
+    height: 10px;
+    background-image: url(../../icons/closeIcon.svg);
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
+    opacity: 0.7;
+    transition: 0.3s ease;    
+    cursor: pointer;
+}
+.tc_closeIcon:hover{
+    opacity:1;
+}
+.tc_tabHead:hover .tc_deleteIcon{
+    opacity: 1;
+    pointer-events: all;
+    cursor: pointer;
+    box-shadow: 3px 3px 5px #bebebe;
+}
+.tc_addTabIcon{
+    width: 2rem;
+    height: 2rem;
+    border-radius: 1rem;
+    background-image: url(../../icons/addIcon.svg);
+    background-position: center;
+    background-size: 0.8rem;
+    background-repeat: no-repeat;
+    opacity: 0.8;
+    cursor: pointer;
+    box-shadow: 3px 3px 5px #bebebe00;
+    transition: 0.3s ease-in;
+}
+.tc_addTabIcon:hover{
+    opacity: 1;
+    box-shadow: 3px 3px 5px #bebebe;
+}
+.tc_modalOpen{
+    overflow: hidden;
+}
+.tc_modal{
+    position: fixed;
+    z-index: 1060;
+    width: 100vw;
+    height: 100vh;
+    background-color: #0003;
+    top: 0;
+    left: 0;
+    opacity: 0;
+    pointer-events: none;
+    transition: 0.3s ease-in;
+}
+.tc_modal.tc_modalActive{
+    opacity: 1;
+    pointer-events: all;
+}
+.tc_modalDialouge{
+    width: 100%;
+    max-width: 700px;
+    margin: 3rem auto;
+    height: 100%;
+}
+.tc_confirmModal .tc_modalDialouge{
+    margin-top: 20vh;
+}
+.tc_addNewModal .tc_modalDialouge{
+    margin-top: 15vh;
+}
+.tc_modalContent{
+    width: 100%;
+    padding: 40px;
+    background-color: #fff;
+    box-shadow: 3px 3px 5px #bebebe;
+    opacity: 0;
+    transform: translateY(50px);
+    transition: 0.3s ease-in;
+}
+.tc_modalActive .tc_modalContent{
+    opacity: 1;
+    transform: translateY(0);
+}
+.tc_modalHeader{
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 16px;
+}
+.tc_modalFooter{
+    width: 100%;
+    display: flex;
+    justify-content: end;
+    align-items: center;
+}
+.tc_cancelBtn, .tc_approveBtn{
+    width: max-content;
+    padding: 0.5rem 1rem;
+    background-color: #fff0;
+    border: 1px solid #fff0;
+    color: #111;
+    cursor: pointer;
+    transition: 0.3s ease-in;
+}
+.tc_cancelBtn{
+    margin-right: 1rem;
+}
+.tc_cancelBtn:hover{
+    text-decoration: underline;
+}
+.tc_approveBtn{
+    border: 1px solid #111;
+    background-color: #111;
+    color: #fff;
+}
+.tc_btnDisabled{
+    pointer-events: none;
+    opacity: 0.7;
+}
+.tc_modalBody{
+    padding: 1rem 0;
+    width: 100%;
+}
+.tc_approveBtn:hover{
+    background-color: #fff0;
+    color: #111;
+}
+.tc_inputWrap{
+    padding: 0.6rem 0;
+    display: flex;
+    width: 100%;
+    flex-direction: column;
+}
+.tc_inputWrap label{
+    margin-bottom: 0.8rem;
+}
+input, textarea{
+    width: 100%;
+    background-color: #fff0;
+    color: #111;
+    border: 1px solid #111;
+    outline: none;
+    padding: 16px;
+}
